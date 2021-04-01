@@ -1,4 +1,4 @@
-# CC
+# Competitive Programming
 Repo to store my Competitive Coding files
 
 Codeforces Handle: rohitkotha10
