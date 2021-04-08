@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "utility": "cpp",
-        "xstring": "cpp",
-        "random": "cpp"
-    },
-    "C_Cpp.errorSquiggles": "Disabled"
-}
