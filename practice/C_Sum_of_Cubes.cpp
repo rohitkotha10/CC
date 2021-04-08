@@ -7,7 +7,22 @@ using namespace std;
 
 void solve()
 {
-    
+    int n;
+    cin >> n;
+    for(int i = 1; i*i*i < n; i++)
+    {
+        int c1 = i*i*i;
+        if(c1 > n) break;
+        int a = cbrt(n - c1);
+        if(a*a*a == n-c1)
+        {
+            cout << "YES\n";
+            return;
+        } 
+    }
+
+    cout << "NO\n";
+   
 }
 
 signed main()

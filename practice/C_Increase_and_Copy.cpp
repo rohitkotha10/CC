@@ -7,7 +7,14 @@ using namespace std;
 
 void solve()
 {
-    
+    int n;
+    cin >> n;
+
+    int a = sqrt(n-1);
+    if(a =)
+    a *= 2;
+    cout << a << endl;
+
 }
 
 signed main()
