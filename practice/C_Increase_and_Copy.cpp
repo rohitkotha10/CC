@@ -5,16 +5,29 @@
 #define rep(i, start, endin, incre) for(int i = start; i <= endin; i += incre)
 using namespace std;
 
+int max_c(int a, int b)
+{
+    if(a > b) return a;
+    return b;
+}
 void solve()
 {
     int n;
     cin >> n;
 
-    int a = sqrt(n-1);
-    if(a =)
-    a *= 2;
-    cout << a << endl;
+    int mn = n;
 
+    //x * y ==> x + y - 2 to increment to x and make y copies, lhs value, rhs moves
+
+    for(int x = max_c(0, sqrt(n) - 5); x <= sqrt(n) + 5 ; x++ )
+    {
+        for( int y = max_c(0, sqrt(n) - 5); y <= sqrt(n) + 5; y++)
+        {
+            if(x * y >= n) mn = min(mn, x + y - 2);
+        }
+    }
+
+    cout << mn << endl;
 }
 
 signed main()
