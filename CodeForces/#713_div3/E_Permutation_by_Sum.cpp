@@ -16,7 +16,7 @@ void solve()
 
     int sum1 = 0;
     int map = 0;
-    bool flag = 0;
+    int flag = 0;
 
     
     //cout << arr[3] << endl;
@@ -32,16 +32,13 @@ void solve()
             break;
         }
     }
-
-    //cout << sum1 << endl;
-
     if(flag == 0)
     {
         cout << -1 << endl;
         return;
     }
 
-    if(sum1 - map -len + 2 > s )
+    if(sum1 - map + 2 - len > s )
     {
         cout << -1 << endl;
         return;
@@ -51,16 +48,28 @@ void solve()
 
     //cout << sum1 - map - 1 << endl;
 
-    if(diff != 0)
+    if(diff == 0) flag = 2;
+    else
     {
-        int re = map - diff;
-        if(re < 0)
+        rep(i, map, map + len - 1, 1)
         {
-            cout << -1 << endl;
-            return;
+            rep(j, 1, map - 1, 1)
+            {
+                if(arr[i] - arr[j] == diff)
+                {
+                    swap(arr[i], arr[j]);
+                    flag = 2;
+                    break;
+                }
+            }
+            if(flag == 2) break;
         }
-        //cout << re << endl;
-        swap(arr[re], arr[map]);
+    }
+
+    if(flag == 1)
+    {
+        cout << -1 << endl;
+        return;
     }
 
     //cout << map << endl;
@@ -74,7 +83,6 @@ void solve()
     if(l < map)
     {
         int offset = map - l;
-        //cout << offset << endl;
         rep(i, 1 + offset, n, 1) cout << arr[i] << ' ';
         rep(i, 1, offset, 1) cout << arr[i] << ' ';
         cout << endl;
@@ -101,7 +109,6 @@ signed main()
         solve();
     }
 }
-
 /*
 1 1 1 1
 2 1 1 1
@@ -159,4 +166,23 @@ signed main()
 4 1 1 8
 4 1 1 9
 4 1 1 10
+4 1 2 1
+    2 2
+    2 3
+    2 4
+    2 5
+    2 6
+    2 7
+    2 8
+    2 9
+    2 10
+    3 1
+  4 3 2
+    3 3
+    3 4
+    3 5
+    3 6
+4 1 3 7
+
+
 */
