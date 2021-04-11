@@ -5,54 +5,35 @@
 #define rep(i, start, endin, incre) for(int i = start; i <= endin; i += incre)
 using namespace std;
 
-
-int sol(int& ans, int n, int& m)
+int getD(int n)
 {
-    
-}
+    int a = 0;
+    while(n > 0)
+    {
+        a++;
+        n /= 10;
+    }
+    return a;
+};
 
-int getdig(int a)
+int f(int n, int m)
 {
     int cnt = 0;
-    while(a > 0)
+    if(n != 9) return f(n + 1, m - 1);
+    if(n == 9) return f(0, m - 1) + f(1, m - 1);
+    if(m == 0)
     {
-        cnt++;
-        a = a/10;
+        if(n == 10) return 2;
+        else return 1;
     }
-    return cnt;
-}
+    return 0;
+};
+
 void solve()
 {
     int n, m;
     cin >> n >> m;
-
-
-    int cop = n;
-    vector<int> arr;
-    int ans = 0;
-    while(cop > 0)
-    {
-        arr.push_back(cop%10);
-        cop /= 10;
-    }
-
-    rep(i, 0, arr.size() - 1, 1)
-    {
-        arr[i] += m;
-        if(arr[i] > 10)
-        {
-            int mcop = m;
-            while(mcop > 0)
-            {
-                arr[i] -= mcop;
-                mcop -= 10 - arr[i];
-                arr[i] = 10;
-            }
-        }
-        else ans += getdig(arr[i]);
-    }
-
-    cout << ans << endl;
+    cout << f(1, 2) << endl;
     
 }
 
