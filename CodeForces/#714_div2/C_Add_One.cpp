@@ -5,45 +5,44 @@
 #define rep(i, start, endin, incre) for(int i = start; i <= endin; i += incre)
 using namespace std;
 
-int getD(int n)
-{
-    int a = 0;
-    while(n > 0)
-    {
-        a++;
-        n /= 10;
-    }
-    return a;
-};
+const int MAX = 2e5 + 5;
+const int MOD = 1e9 + 7;
 
-int f(int n, int m)
+//sol: Tutorial
+void solve(const vector<int>& v)
 {
-    int cnt = 0;
-    if(n != 9) return f(n + 1, m - 1);
-    if(n == 9) return f(0, m - 1) + f(1, m - 1);
-    if(m == 0)
-    {
-        if(n == 10) return 2;
-        else return 1;
-    }
-    return 0;
-};
-
-void solve()
-{
+     
     int n, m;
     cin >> n >> m;
-    cout << f(1, 2) << endl;
+
+    int ans = 0;
+
+    while(n > 0)
+    {
+        int val = n % 10;
+        if(m + val < 10) ans += 1;
+        else ans += v[m + val - 10];
+        ans %= MOD;
+        n /= 10;
+    }
+
+    cout << ans << endl;
+
     
 }
 
 signed main()
 {
+    vector<int> dp(2e5 + 5);
+    rep(i, 0, 8, 1) dp[i] = 2;
+    dp[9] = 3; 
+    rep(i, 10, MAX, 1) dp[i] = ( dp[i - 9] + dp[i - 10] ) % MOD;
+
     IOS;
     int t=1;
     cin >> t;
     while(t--)
     {
-        solve();
+        solve(dp);
     }
 }

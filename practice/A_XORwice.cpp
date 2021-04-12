@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 12.04.2021 09:43:27
+created: 12.04.2021 08:26:12
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -10,12 +10,11 @@ using namespace std;
 #define endl '\n'
 #define rep(i, start, endin, incre) for(int i = start; i <= endin; i += incre)
 
-const int MAX = 2e5 + 5;
-const int MOD = 1e9 + 7;
-
 void solve()
 {
-    
+    int a, b;
+    cin >> a >> b;
+    cout << (a ^ b) << endl;   
 }
 
 signed main()
