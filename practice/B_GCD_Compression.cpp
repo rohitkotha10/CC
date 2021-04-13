@@ -31,6 +31,7 @@ void solve()
         cin >> arr[i].val;
     }
 
+
     vector<Token> odd;
     vector<Token> even;
 
@@ -40,46 +41,55 @@ void solve()
         else odd.push_back(arr[i]);
     }
 
-    cout << even.size() << ' ' << odd.size() << endl;
-    return;
+    // cout << even.size() << ' ' << odd.size() << endl;
+    // return;
 
-    if(odd.size() % 2 == 1 && odd.size() > 2)
+    if((int)odd.size() % 2 == 1 )
     {
-        rep(i, 1, odd.size() - 2, 2)
+        odd.pop_back();
+        int i = 0;
+        while(i <= (int)odd.size() - 2)
         {
             cout << odd[i].map << ' ' << odd[i + 1].map << endl;
+            i += 2;
         }
 
-        rep(i, 1, even.size() - 2, 2)
+        even.pop_back();
+        i = 0;
+        while(i <= (int)even.size() - 2)
         {
             cout << even[i].map << ' ' << even[i + 1].map << endl;
+            i += 2;
         }
     }
 
     else
     {
-        if(odd.size() >= 2)
+        if((int)odd.size() >= 2)
         {
-            rep(i, 0, odd.size() - 2, 2)
-            {
-                cout << odd[i].map << ' ' << odd[i + 1].map << endl;
-            }
-
-
-            rep(i, 2, even.size() - 2, 2)
-            {
-                cout << even[i].map << ' ' << even[i + 1].map << endl;
-            }
-
+            odd.pop_back();
+            odd.pop_back();
         }
         else
         {
-            rep(i, 0, even.size() - 2, 2)
-            {
-                cout << even[i].map << ' ' << even[i + 1].map << endl;
-            }
+            even.pop_back();
+            even.pop_back();
         }
-        
+
+        int i = 0;
+        while(i <= (int)odd.size() - 2)
+        {
+            cout << odd[i].map << ' ' << odd[i + 1].map << endl;
+            i += 2;
+        }
+
+        i = 0;
+        while(i <= (int)even.size() - 2)
+        {
+            cout << even[i].map << ' ' << even[i + 1].map << endl;
+            i += 2;
+        }
+
     }
 
 
