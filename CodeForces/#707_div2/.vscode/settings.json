@@ -1,0 +1,15 @@
+{
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "vector": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "algorithm": "cpp",
+        "ios": "cpp",
+        "string": "cpp",
+        "__locale": "cpp",
+        "__string": "cpp",
+        "regex": "cpp",
+        "string_view": "cpp"
+    }
+}
