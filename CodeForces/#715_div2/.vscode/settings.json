@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "cmath": "cpp",
+        "*.tcc": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}
