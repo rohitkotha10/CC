@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 15.04.2021 18:19:02
+created: 16.04.2021 19:09:00
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -12,27 +12,19 @@ using namespace std;
 
 const int MAX = 2e5 + 5;
 const int MOD = 1e9 + 7;
-//solution tutorial 
+
 void solve()
 {
-    int a, b, c, d;
-    cin >> a >> b >> c >> d;
-    int x , y, x1, y1, x2, y2;
-    cin >> x >> y >> x1 >> y1 >>  x2 >> y2;
-
-    if(((x2 - x >= b - a && x - x1 >= a - b) && (x1 < x2 || a + b == 0))    &&    ((y2 - y >= d - c && y - y1 >= c - d) && (y1 < y2 || c + d == 0)))
-    {
-        cout << "Yes" << endl;
-    }
-    else 
-    {
-        cout << "No" << endl;
-    }
-
+    int n, k;
+    cin >> n >> k;
     
+    if((k % 2 == 1 && n % 2 == 0) || (k % 2 == 0 && n % 2 == 1))
+    {
+        cout << "NO" << endl;
+        return;
+    }
 
-
-   
+    (k * k > n) ? cout << "NO" << endl : cout << "YES" << endl;
 
 }
 
