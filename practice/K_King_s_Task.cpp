@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 19.04.2021 18:35:56
+created: 21.04.2021 01:05:07
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -13,6 +13,34 @@ using namespace std;
 const int MAX = 2e5 + 5;
 const int MOD = 1e9 + 7;
 //no test case
+
+void op1(vector<int>& v)
+{
+    int n = (v.size() - 1) / 2; //size 2 n + 1; v[0] = 0;
+    rep(i, 1, n, 1)
+    {
+        swap(v[i], v[n + i]);
+    }
+};
+
+void op2(vector<int>& v)
+{
+    int n = (v.size() - 1) / 2; //size 2 n + 1; v[0] = 0;
+    rep(i, 1, 2 * n, 2)
+    {
+        swap(v[i], v[i + 1]);
+    }
+};
+
+void print(const vector<int>& v)
+{
+    int n = (v.size() - 1) / 2;
+    cout << "{ ";
+    rep(i, 1, 2 * n, 1) cout << v[i] << ", ";
+    cout << "}" << endl;
+
+}
+
 void solve()
 {
     int n;
@@ -21,35 +49,66 @@ void solve()
     arr[0] = 0;
     rep(i, 1, 2 * n, 1) cin >> arr[i];
 
+    vector<int> arrold = arr;
+
 
     vector<int> sol(2 * n + 1);
     sol[0] = 0;
-    
     rep(i, 1, 2 * n, 1) sol[i] = i;
+
     int cnt = 0;
-    int i = 1;
+    int temp = 0;
+    bool flag = 0;
+
+    if(arr == sol)
+    {
+        cout << 0 << endl;
+        return;
+    }
     while(arr != sol)
     {
-        cnt++;
-        if(i <= n )
+        op1(arr);
+        temp++;
+        if(arr == sol)
         {
-            if(arr[i] > n ) swap(arr[i], arr[n + i]);
-            else if(arr[i] > i) swap(arr[i], arr[i + 1]);
+            flag = 1;
+            break;
         }
-        if(i > n)
+        op2(arr);
+        temp++;
+        if(arr == sol)
         {
-            if(arr[i] < n ) swap(arr[i], arr[i - n]);
-            else if(arr[i] > i) swap(arr[i], arr[i + 1]);
+            flag = 1;
+            break;
         }
-        i++;
-        if(i == 2 * n + 1) i = 1;
-
-        rep(i, 1, 2 * n, 1) cout << arr[i] << ' ';
-        cout << endl;
-        
+        if(temp > 2 * n) break;
     }
 
-    cout << cnt << endl;
+    arr = arrold;
+
+    while(arr != sol)
+    {
+        op2(arr);
+        cnt++;
+        if(arr == sol)
+        {
+            flag = 1;
+            break;
+        }
+        op1(arr);
+        cnt++;
+        if(arr == sol)
+        {
+            flag = 1;
+            break;
+        }
+        if(cnt > 2 * n) break;
+    }
+
+    cnt = min(cnt, temp);
+    if(flag == 0) cout << - 1 << endl;
+    else cout << cnt << endl;
+
 }
 
 signed main()
