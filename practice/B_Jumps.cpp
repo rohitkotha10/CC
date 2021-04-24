@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 22.04.2021 21:35:22
+created: 22.04.2021 21:35:28
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,23 +17,23 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> arr(n);
-    int osum;
-    int esum;
-    rep(i, 0, n - 1, 1) cin >> arr[i];
-    sort(arr.begin(), arr.end());
-
-    int s = 0;
-    int turn = 0;
-    while(arr.size())
+    if(n <= 0)
     {
-        if(arr.back() % 2 == 0 && turn == 0) s += arr.back();
-        else if(arr.back() % 2 == 1 && turn == 1) s -= arr.back();
-        turn = 1 - turn;
-        arr.pop_back();
+        cout << -n << endl;
+        return;
     }
 
-    cout << (s > 0 ? "Alice" : s == 0 ? "Tie" : "Bob") << endl;
+    int pos = 0;
+    int k = 0;
+    while(true)
+    {
+        pos = (k * (k + 1)) / 2;
+        if(pos >= n) break;
+        k++;
+    }
+    int diff = pos - n;
+    if(diff != 1) cout << k << endl;
+    else cout << k + 1 << endl;
 }
 
 signed main()

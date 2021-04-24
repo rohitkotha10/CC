@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "cmath": "cpp",
+        "*.tcc": "cpp",
+        "array": "cpp",
+        "fstream": "cpp",
+        "future": "cpp",
+        "optional": "cpp",
+        "sstream": "cpp",
+        "thread": "cpp",
+        "tuple": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}
