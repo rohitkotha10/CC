@@ -2,7 +2,7 @@
 author:  rohitkotha10
 created: 23.04.2021 13:46:15
 */
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 struct Point { int x, y; };

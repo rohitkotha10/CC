@@ -2,7 +2,8 @@
 author:  rohitkotha10
 created: 25.04.2021 11:29:31
 */
-#include <bits/stdc++.h>
+#include <vector>
+#include <iostream>
 using namespace std;
 
 int main()
