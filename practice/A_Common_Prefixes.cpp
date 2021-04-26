@@ -12,7 +12,11 @@ using namespace std;
 
 const int MAX = 2e5 + 5;
 const int MOD = 1e9 + 7;
-
+//had problem when arr[i] < arr[i - 1] and when arr[i] was 0, hence function change was created
+void change(string& s, int prev)
+{
+    s = s.substr(0, prev) + s.substr(prev + 1, s.size() - prev - 1) + s[prev];
+}
 void solve()
 {
     int n;
@@ -24,14 +28,33 @@ void solve()
     {
         s += s;
     }
-    rep(i, 0, n - 1, 1)
+
+    
+    if(arr[0] == 0)
     {
-        if(arr[i] == 0) cout << s.substr(i + 1, 2) << endl;
-        else if(i == 0) cout << s.substr(0, arr[i]) << endl;
-        else cout << s.substr(0, max(arr[i], arr[i - 1])) << endl;
+        cout << s.substr(0, 1) << endl;
+        change(s, 0);
     }
-    if(arr[n - 1] == 0) cout << s.substr(n + 1, 2) << endl;
-    else cout << s.substr(0, arr[n - 1]) << endl;
+    else
+        cout << s.substr(0, arr[0]) << endl;
+    
+    rep(i, 1, n - 1, 1)
+    {
+        if(arr[i] < arr[i - 1] || arr[i] == 0)
+        {
+            cout << s.substr(0, max(1LL, arr[i - 1])) << endl;
+            change(s, arr[i]);
+        }
+        
+        else if (arr[i] >= arr[i - 1])
+        {
+            cout << s.substr(0, arr[i]) << endl;
+        }
+        
+    }
+    cout << s.substr(0, max(1LL, arr[n - 1])) << endl;
+
+    //cout << endl;
 }
    
 
@@ -46,6 +69,3 @@ signed main()
         solve();
     }
 }
-
-
-
