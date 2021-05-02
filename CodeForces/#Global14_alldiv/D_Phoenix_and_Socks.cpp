@@ -13,6 +13,8 @@ using namespace std;
 const int MAX = 2e5 + 5;
 const int MOD = 1e9 + 7;
 
+int testnum = 0;
+
 void solve()
 {
     int n, l, r;
@@ -29,6 +31,7 @@ void solve()
             right.push_back(val);
     }
 
+
     sort(right.begin(), right.end());
     sort(left.begin(), left.end());
 
@@ -39,11 +42,8 @@ void solve()
     {
         if (left[i] == right[j])
         {
-            i++;
-            j++;
             left.erase(left.begin() + i);
             right.erase(right.begin() + j);
-
         }
 
         else if (left[i] < right[j])
@@ -88,8 +88,11 @@ void solve()
             j++;
     }
 
+
     int a = left.size();
     int b = right.size();
+
+    cout << a << ' ' << b << ' ' << cnt << endl;
 
     if (a > b)
         swap(a, b);
@@ -107,6 +110,13 @@ signed main()
     cin >> t;
     while(t--)
     {
+        testnum++;
         solve();
     }
 }
+
+/*
+missed: do pairing first of l and r
+6 2 4
+3 3 5 5 7 1
+*/

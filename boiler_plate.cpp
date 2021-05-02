@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 12.04.2021 09:43:27
+created: 03.05.2021 02:18:21
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -12,6 +12,9 @@ using namespace std;
 
 const int MAX = 2e5 + 5;
 const int MOD = 1e9 + 7;
+
+int testnum = 0;
+int testflag = 0;
 
 void solve()
 {
@@ -25,6 +28,7 @@ signed main()
     cin >> t;
     while(t--)
     {
+        testnum++;
         solve();
     }
 }
