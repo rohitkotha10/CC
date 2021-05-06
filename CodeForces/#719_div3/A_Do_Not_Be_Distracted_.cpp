@@ -21,6 +21,24 @@ int testflag = 0;
 
 void solve()
 {
+    int n;
+    string s;
+    cin >> n >> s;
+
+    rep(i, 0, n - 1, 1)
+    {
+        char a = s[i];
+        rep(j, i + 1, n - 1, 1)
+        {
+            if (s[j] == a && s[j] != s[j - 1])
+            {
+                cout << "NO" << endl;
+                return;
+            }
+        }
+    }
+
+    cout << "YES" << endl;
 }
 
 signed main()

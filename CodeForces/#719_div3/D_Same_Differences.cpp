@@ -21,6 +21,25 @@ int testflag = 0;
 
 void solve()
 {
+    int n;
+    cin >> n;
+    vector<int> arr(n);
+    rep(i, 0, n - 1, 1) cin >> arr[i];
+
+    multiset<int> sol;
+    set<int> num;
+    rep(i, 0, n - 1, 1)
+    {
+        sol.insert(arr[i] - i);
+        num.insert(arr[i] - i);
+    }
+
+    int cnt = 0;
+
+    for (int n : num)
+        cnt += sol.count(n) * (sol.count(n) - 1) / 2;
+
+    cout << cnt << endl;
 }
 
 signed main()

@@ -19,8 +19,14 @@ const int MOD = 1e9 + 7;
 int testnum = 0;
 int testflag = 0;
 
+struct Token
+{
+    int map, val;
+};
+
 void solve()
 {
+    
 }
 
 signed main()

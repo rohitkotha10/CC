@@ -19,8 +19,27 @@ const int MOD = 1e9 + 7;
 int testnum = 0;
 int testflag = 0;
 
+int digN(int n)
+{
+    int cnt = 0;
+    while (n > 0)
+    {
+        n /= 10;
+        cnt++;
+    }
+
+    return cnt;
+};
+
 void solve()
 {
+    int n;
+    cin >> n;
+    int dig = digN(n);
+    int cnt = (dig - 1) * 9;
+    int check = (pow(10, dig) - 1) / 9;
+    cnt += n / check;
+    cout << cnt << endl;
 }
 
 signed main()
