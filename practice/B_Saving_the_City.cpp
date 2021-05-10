@@ -19,36 +19,69 @@ const int MOD = 1e9 + 7;
 
 int testnum = 0;
 int testflag = 0;
-
+//sol: tut
 void solve()
 {
     int a, b;
     cin >> a >> b;
     string arr;
     cin >> arr;
-    int n = arr.length();
 
-    int ans = 0;
-    int cnt = 0;
-    rep(i, 0, n - 1, 1)
+    vector<int> sol;
+    rep(i, 0, arr.size() - 1, 1)
     {
         if (arr[i] == '1')
-            cnt++;
+            sol.push_back(i);
     }
-    if (cnt * a > b)
+
+    if (sol.size() <= 1)
     {
-        cout << cnt << endl;
+        cout << sol.size() * a << endl;
         return;
     }
-    
-    int fir, las;
 
-    rep(i, 0, n - 1, 1)
+    vector<pair<int, int>> fin;
+
+    int ans = 0;
+    rep(i, 1, sol.size() - 1, 1)
     {
-        if (arr[i] == '1')
-        
+        int val = sol[i] - sol[i - 1];
+        if ((val - 1) * b <= a)
+        {
+            fin.emplace_back(sol[i - 1], sol[i]);
+            ans += (val - 1) * b;
+        }
     }
-    
+
+    if (fin.size() == 0)
+    {
+        cout << sol.size() * a << endl;
+        return;
+    }
+
+    int tot = 2 * fin.size();
+
+    if (fin.size() == 1)
+    {
+        ans += a;
+    }
+
+    else
+    {
+        rep(i, 0, fin.size() - 1, 1)
+        {
+            if (i + 1 < fin.size() && fin[i].second == fin[i + 1].first)
+            {
+                tot--;
+                continue;
+            }
+            ans += a;
+        }
+    }
+
+    ans += (sol.size() - tot) * a;
+
+    cout << ans << endl;
 }
 
 signed main()
