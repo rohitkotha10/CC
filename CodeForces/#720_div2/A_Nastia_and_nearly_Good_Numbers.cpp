@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 03.05.2021 02:18:21
+created: 07.05.2021 20:07:52
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -12,43 +12,36 @@ using namespace std;
 #define int long long
 #define endl '\n'
 #define rep(i, start, endin, incre) for (int i = start; i <= endin; i += incre)
-#define all(a) a.begin(), a.end()
 
-const int MAX = 2e5 + 5;
+const int MAX = 2e18 + 5;
 const int MOD = 1e9 + 7;
 
 int testnum = 0;
 int testflag = 0;
 
+int gcd(int a, int b)
+{
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+};
+
+int lcm(int a, int b)
+{
+    return a * b / gcd(a, b);
+};
+
 void solve()
 {
     int a, b;
     cin >> a >> b;
-    string arr;
-    cin >> arr;
-    int n = arr.length();
 
-    int ans = 0;
-    int cnt = 0;
-    rep(i, 0, n - 1, 1)
+    if (b == 1) cout << "NO" << endl;
+    else
     {
-        if (arr[i] == '1')
-            cnt++;
+        cout << "YES" << endl;
+        cout << a << ' ' << a * (2 * b - 1) << ' ' << 2 * a * b << endl;
     }
-    if (cnt * a > b)
-    {
-        cout << cnt << endl;
-        return;
-    }
-    
-    int fir, las;
-
-    rep(i, 0, n - 1, 1)
-    {
-        if (arr[i] == '1')
-        
-    }
-    
 }
 
 signed main()
