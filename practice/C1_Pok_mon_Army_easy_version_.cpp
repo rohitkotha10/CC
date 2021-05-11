@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 10.05.2021 22:04:35
+created: 11.05.2021 08:56:13
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -19,8 +19,69 @@ const int MOD = 1e9 + 7;
 int testnum = 0;
 int testflag = 0;
 
+void print(const vector<int> &arr)
+{
+    for (int i : arr)
+    {
+        cout << i << ' ';
+    }
+    cout << endl;
+}
+
 void solve()
 {
+    int n, q;
+    cin >> n >> q;
+    vector<int> arr(n);
+    rep(i, 0, n - 1, 1) cin >> arr[i];
+
+    vector<int> change{arr[0]};
+    rep(i, 1, n - 1, 1)
+        change.push_back(arr[i] - arr[i - 1]);
+
+    vector<int> sol;
+
+    int i = 0;
+    while (i < n)
+    {
+        while (change[i] >= 0 && i < n)
+            i++;
+
+        //cout << i << 's' << change[i - 1] << ' ' << arr[i - 1] << endl;
+        sol.push_back(arr[i - 1]);
+        if (i == n)
+            break;
+
+        while (change[i] < 0 && i < n)
+            i++;
+        //cout << i << 'd' << change[i - 1] << ' ' << arr[i - 1] << endl;
+        sol.push_back(arr[i - 1]);
+    }
+    // print(arr);
+    // print(change);
+    //print(sol);
+
+    if (sol.size() <= 2)
+    {
+        cout << sol[0] << endl;
+        return;
+    }
+    if (sol.size() % 2 == 0)
+        sol.pop_back();
+
+    int cur = 0;
+    int temp = 0;
+
+    rep(i, 0, sol.size() - 2, 2)
+    {
+        cur += sol[i] - sol[i + 1];
+    }
+
+    //print(sol);
+
+    cur += sol[sol.size() - 1];
+
+    cout << cur << endl;
 }
 
 signed main()
