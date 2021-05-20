@@ -12,21 +12,21 @@ int main()
     cin >> n;
     vector<int> arr(n);
 
-    for(int &x : arr) cin >> x;
+    for (int &x : arr)
+        cin >> x;
 
     int val;
     cin >> val;
     int k = 0;
-    for(int b = n / 2; b >= 1; b /= 2)
+    for (int b = n / 2; b >= 1; b /= 2)
     {
-        while(k < n && arr[k + b] <= val) k += b;
+        while (k < n && arr[k + b] <= val)
+            k += b;
     }
 
-    if(arr[k] == val) cout << "FOUND AT "<< k + 1 << endl;
+    if (arr[k] == val)
+        cout << "FOUND AT " << k + 1 << endl;
     else
-    {
         cout << "NOT FOUND" << endl;
-    }
     return 0;
-
 }

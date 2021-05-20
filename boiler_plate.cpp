@@ -19,6 +19,15 @@ const int MOD = 1e9 + 7;
 int testnum = 0;
 int testflag = 0;
 
+void print(const vector<int> &arr)
+{
+    for (int i : arr)
+    {
+        cout << i << ' ';
+    }
+    cout << endl;
+};
+
 void solve()
 {
 }
