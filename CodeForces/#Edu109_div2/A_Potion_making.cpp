@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 20.05.2021 17:18:16
+created: 20.05.2021 18:15:11
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -18,6 +18,11 @@ const int MOD = 1e9 + 7;
 
 void solve()
 {
+    int k;
+    cin >> k;
+    int ans = __gcd(100 - k, 100LL);
+    cout << 100 / ans << endl;
+
 }
 
 signed main()

@@ -18,6 +18,30 @@ const int MOD = 1e9 + 7;
 
 void solve()
 {
+    int n;
+    cin >> n;
+    string a, b;
+    cin >> a >> b;
+    vector<int> sol;
+    rep(i, 0, n - 1, 1)
+    {
+        if (a[i] != b[i])
+        {
+            if (i == 0)
+            {
+                sol.push_back(i + 1);
+                continue;
+            }
+            sol.push_back(i + 1);
+            sol.push_back(i);
+        }
+    }
+    cout << sol.size() << ' ';
+    if (sol.size() % 2 == 1)
+        
+    for (int i : sol)
+        cout << i << ' ';
+        cout << endl;
 }
 
 signed main()

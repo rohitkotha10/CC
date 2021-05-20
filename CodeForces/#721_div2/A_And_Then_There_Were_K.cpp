@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 20.05.2021 17:18:16
+created: 20.05.2021 20:05:44
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -16,8 +16,25 @@ using namespace std;
 const int MAX = 2e5 + 5;
 const int MOD = 1e9 + 7;
 
+int F2(int n)
+{
+    int i = 1;
+    while (true)
+    {
+        i *= 2;
+        if (i > n)
+            break;
+    }
+
+    return (i / 2);
+}
+
 void solve()
 {
+    int n;
+    cin >> n;
+    int ans = F2(n) - 1;
+    cout << ans << endl;
 }
 
 signed main()

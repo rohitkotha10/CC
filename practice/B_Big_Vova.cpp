@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 12.05.2021 16:57:33
+created: 20.05.2021 16:30:22
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -19,18 +19,6 @@ const int MOD = 1e9 + 7;
 int testnum = 0;
 int testflag = 0;
 
-int gcd(int a, int b)
-{
-    if (b == 0)
-        return a;
-    return gcd(b, a % b);
-};
-
-bool comp(int a, int b)
-{
-    return a > b;
-}
-
 void print(const vector<int> &arr)
 {
     for (int i : arr)
@@ -38,7 +26,7 @@ void print(const vector<int> &arr)
         cout << i << ' ';
     }
     cout << endl;
-}
+};
 
 void solve()
 {
@@ -48,33 +36,33 @@ void solve()
     rep(i, 0, n - 1, 1) cin >> arr[i];
 
     sort(arr.rbegin(), arr.rend());
+    vector<bool> used(n, 0);
+    used[0] = 1;
 
-    int i = 1;
-    while (i < n)
+    vector<int> sol;
+    sol.push_back(arr[0]);
+    int cur = arr[0];
+
+    rep(j, 1, n - 1, 1)
     {
-        int gmax = 0;
-        int map = 0;
-        rep(j, i, n - 1, 1)
+        int best = -1;
+        int ind = -1;
+        rep(i, 0, n - 1, 1)
         {
-            int temp = 0;
-            temp = gcd(arr[j], arr[i - 1]);
-            if (temp > gmax)
+            int val = __gcd(arr[i], cur);
+            if (val > best && used[i] == 0)
             {
-                gmax = temp;
-                map = j;
+                best = val;
+                ind = i;
+                //cout << val << ' ' << cur << endl;
             }
         }
-
-
-        if (gmax <= 1)
-            break;
-
-        swap(arr[map], arr[i]);
-        i++;
-        sort(arr.begin() + i, arr.end(), comp);
+        //cout << j << ' ' << arr[ind] << endl;
+        sol.push_back(arr[ind]);
+        used[ind] = 1;
+        cur = best;
     }
-
-    print(arr);
+    print(sol);
 }
 
 signed main()
