@@ -15,33 +15,44 @@ using namespace std;
 
 const int MAX = 2e5 + 5;
 const int MOD = 1e9 + 7;
-
+//sol: Secondthread
 void solve()
 {
     int n;
     cin >> n;
     string a, b;
     cin >> a >> b;
+
     vector<int> sol;
-    rep(i, 0, n - 1, 1)
+
+    rep(i, 0, n - 2, 1)
     {
-        if (a[i] != b[i])
-        {
-            if (i == 0)
-            {
-                sol.push_back(i + 1);
-                continue;
-            }
+        if (a[i] != a[i + 1])
             sol.push_back(i + 1);
-            sol.push_back(i);
-        }
     }
-    cout << sol.size() << ' ';
-    if (sol.size() % 2 == 1)
-        
+
+    if (a[n - 1] == '1')
+        sol.push_back(n);
+
+    vector<int> sol2;
+
+    rep(i, 0, n - 2, 1)
+    {
+        if (b[i] != b[i + 1])
+            sol2.push_back(i + 1);
+    }
+
+    if (b[n - 1] == '1')
+        sol2.push_back(n);
+
+    reverse(sol2.begin(), sol2.end());
+
+    cout << (int)(sol.size() + sol2.size()) << ' ';
     for (int i : sol)
         cout << i << ' ';
-        cout << endl;
+    for (int i : sol2)
+        cout << i << ' ';
+    cout << endl;
 }
 
 signed main()
