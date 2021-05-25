@@ -37,45 +37,50 @@ void solve()
     }
 
     if (cnt == 0)
-        cout << n << endl;
-    else
     {
-        if (flag == 1)
-        {
-            sort(arr.begin(), arr.end());
-            rep(i, 0, n - 1, 1)
-            {
-                if (arr[i] == 0)
-                {
-                    if (i == 0)
-                    {
-                        cout << 2 << endl;
-                        return;
-                    }
+        cout << n << endl;
+        return;
+    }
 
-                    int a = arr[i + 1];
-                    for (int j = i - 1; j >= 0; j--)
-                    {
-                        if (-arr[j] >= a)
-                        {
-                            int now = i - j - 1;
-                            int ans = n - cnt + 1;
-                            ans -= now;
-                            cout << ans << endl;
-                            return;
-                        }
-                    }
-                    cout << 2 << endl;
-                }
-            }
-        }
-        else if (flag == 0)
-            cout << n - cnt + 1 << endl;
-        else
+    sort(arr.begin(), arr.end());
+
+    if (arr[0] > 0)
+    {
+        cout << 1 << endl;
+        return;
+    }
+
+    if (flag >= 2)
+    {
+        cout << n - cnt << endl;
+        return;
+    }
+
+    int minpos = 0;
+    rep(i, 0, n - 1, 1)
+    {
+        if (arr[i] >= 0)
         {
-            cout << n - cnt << endl;
+            if (arr[i] == 0)
+                minpos = arr[i + 1];
+            else
+                minpos = arr[i];
+            break;
         }
     }
+
+    int pair_diff = arr[1] - arr[0];
+    rep(i, 0, n - 2, 1)
+    {
+        pair_diff = min(arr[i + 1] - arr[i], pair_diff);
+        if (arr[i + 1] > 0)
+            break;
+    }
+
+    if (pair_diff < minpos)
+        cout << n - cnt << endl;
+    else
+        cout << n - cnt + 1 << endl;
 }
 
 signed main()
