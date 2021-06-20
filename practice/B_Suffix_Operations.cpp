@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 20.06.2021 11:13:03
+created: 20.06.2021 12:22:26
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -20,11 +20,10 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> arr;
+    vector<int> arr(n);
     rep(i, 0, n - 1, 1)
             cin >>
         arr[i];
-    
 }
 
 signed main()

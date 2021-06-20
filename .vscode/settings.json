@@ -68,4 +68,5 @@
         "typeinfo": "cpp",
         "valarray": "cpp"
     },
+    "explorer.sortOrder": "type"
 }
