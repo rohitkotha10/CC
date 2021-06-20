@@ -3,6 +3,8 @@ author:  rohitkotha10
 created: 25.04.2021 15:58:38
 */
 #include <vector>
+#include <iostream>
+#include <math.h>
 using namespace std;
 
 vector<int> primes;
@@ -42,4 +44,10 @@ void init_sieve(long long int max)
     }
     //cout << "SUCCESS" << endl;
 };
+
+int main()
+{
+    init_sieve(sqrt(1e9));
+    cout << primes.size() << endl;
+}
 

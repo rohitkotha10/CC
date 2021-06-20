@@ -15,24 +15,7 @@ using namespace std;
 
 const int MAX = 2e5 + 5;
 const int MOD = 1e9 + 7;
-//sol: tut
-bool verify(vector<int> arr)
-{
-    int n = arr.size();
-    sort(arr.begin(), arr.end());
-    rep(i, 0, n - 1, 1)
-    {
-        if (arr[i] != 0)
-        {
-            if (arr[i] == arr[n - 1])
-                return true;
-            else
-                return false;
-        }
-    }
-
-    return false;
-};
+//sol: neal wu, stupid tut
 
 void solve()
 {
@@ -43,77 +26,47 @@ void solve()
             cin >>
         arr[i];
 
-    if (verify(arr))
-    {
-        cout << 0 << endl;
-        return;
-    }
     int sum = 0;
+    for (int i : arr)
+        sum += i;
 
-    for (int val : arr)
-        sum += val;
-
-    int k = 1;
-    bool flag = 0;
-    while (k < n)
+    for (int len = n; len >= 1; len--)
     {
-
-        int check = sum / (n - k);
-        if (sum % (n - k) != 0)
-            check++;
-
-        if (flag == 0 && arr[0] >= check)
+        bool flag = 1;
+        if (sum % len != 0)
         {
-            flag = 1;
-            reverse(arr.begin(), arr.end());
+            flag = 0;
+            continue;
         }
 
-        // cout << k << ' ' << check << ' ';
-
-        // for (int i : arr)
-        //     cout << i << ' ';
-        // cout << endl;
-
-        rep(i, 0, n - 1, 1)
+        int goal = sum / len;
+        int i = 0;
+        while (i < n)
         {
-            if (arr[i] < check && arr[i] != 0)
+            int temp = 0;
+            while (temp < goal && i < n)
             {
-                if (i == n - 1)
-                {
-                    cout << -1 << endl;
-                    return;
-                }
-                int add = 0;
-                for (int j = i; j >= 0; j--)
-                {
-                    if (arr[j] != 0)
-                    {
-                        add = arr[j];
-                        arr[j] = 0;
-                        break;
-                    }
-                }
-
-                arr[i + 1] += add;
-                arr[i] = 0;
+                temp += arr[i];
+                i++;
+            }
+            //cout << i << ' ' << temp << endl;
+            if (temp != goal)
+            {
+                flag = 0;
                 break;
             }
+            else
+                temp = 0;
+            //i++;
         }
 
-        // for (int i : arr)
-        //     cout << i << ' ';
-        // cout << endl;
-
-        if (verify(arr))
+        if (flag == 1)
         {
-            cout << k << endl;
+            //cout << len << endl;
+            cout << n - len << endl;
             return;
         }
-
-        k++;
     }
-
-    cout << k - 1 << endl;
 }
 
 signed main()
