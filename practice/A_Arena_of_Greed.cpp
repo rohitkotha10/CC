@@ -12,37 +12,39 @@ using namespace std;
 
 const int MAX = 2e5 + 5;
 const int MOD = 1e9 + 7;
-
+//sol: tut
 void solve()
 {
     int n;
     cin >> n;
-    int a1 = 0, a2 = 0;
+    int cnt = 0;
     bool flag = 1;
     while (n > 0)
     {
-        while (n % 2 == 0 && n > 0)
+        if (n % 2 == 0 && !(n % 4 == 0 && n > 8))
         {
             if (flag == 1)
             {
-                a1 += n / 2;
-                n /= 2;
+                cnt += n / 2;
+                flag = 0;
             }
-
             else
-            {
-                a2 += n / 2;
-                n /= 2;
-            }
+                flag = 1;
+            n /= 2;
         }
-
-        if (flag == 1)
+        else
         {
-            a1++;
-            flag = 0;
+            if (flag == 1)
+            {
+                cnt++;
+                flag = 0;
+            }
+            else
+                flag = 1;
+            n--;
         }
     }
-
+    cout << cnt << endl;
 }
 
 signed main()
