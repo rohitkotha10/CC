@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 24.06.2021 19:07:29
+created: 25.06.2021 09:14:56
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -13,14 +13,16 @@ using namespace std;
 const int MAX = 2e5 + 5;
 const int MOD = 1e9 + 7;
 
+void solve()
+{
+    
+}
+
 signed main()
 {
     IOS;
-    string arr;
-    cin >> arr;
-    cout << 4 << endl;
-    cout << "L " << 2 << endl;
-    cout << "L " << 2 << endl;
-    cout << "R " << 2 << endl;
-    cout << "R " << 2 * arr.size() + 1 << endl;
+    int t = 1;
+    cin >> t;
+    while (t--)
+        solve();
 }
