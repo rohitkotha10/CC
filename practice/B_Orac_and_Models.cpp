@@ -13,6 +13,23 @@ using namespace std;
 const int MAX = 2e5 + 5;
 const int MOD = 1e9 + 7;
 //sol: tut
+
+int recurse(int a, vector<int> arr)//O(2^n)
+{
+    int n = arr.size();
+    if (a >= n)
+        return 0;
+    int cnt = 1;
+    for (int i = 2 * a; i <= n; i += a)
+    {
+        if (arr[a] < arr[i])
+        {
+            cnt = max(cnt, 1 + recurse(i, arr));
+        }
+    }
+
+    return cnt;
+}
 void solve()
 {
     int n;
@@ -20,23 +37,28 @@ void solve()
     vector<int> arr(n + 1);
     for (int i = 1; i <= n; i++)
         cin >> arr[i];
-    vector<int> sol(n + 1, 1);
-    sol[0] = 0;
-    sol[n] = 1;
-    for (int i = n - 1; i >= 1; i--)
-    {
-        int temp = 1;
-        for (int j = i * 2; j <= n; j += i)
-        {
-            if (arr[i] < arr[j])
-            {
-                temp = max(temp, 1 + sol[j]);
-            }
-        }
-        sol[i] = temp;
-    }
+    // vector<int> sol(n + 1, 1);//O(n)
+    // sol[0] = 0;
+    // sol[n] = 1;
+    // for (int i = n - 1; i >= 1; i--)
+    // {
+    //     int temp = 1;
+    //     for (int j = i * 2; j <= n; j += i)
+    //     {
+    //         if (arr[i] < arr[j])
+    //         {
+    //             temp = max(temp, 1 + sol[j]);
+    //         }
+    //     }
+    //     sol[i] = temp;
+    // }
 
-    cout << *max_element(sol.begin(), sol.end()) << endl;
+    // cout << *max_element(sol.begin(), sol.end()) << endl;
+
+    int ans = 1;
+    for (int i = 1; i <= n; i++)
+        ans = max(ans, recurse(i, arr));
+    cout << ans << endl;
 }
 
 signed main()
