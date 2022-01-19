@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 28.12.2021 19:55:54
+created: 03.01.2022 19:19:24
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,14 +17,14 @@ void solve()
 {
     string s;
     cin >> s;
-    int n = s.length();
-    int cnt = 0;
-    for (int i = 0; i < n; i++) 
-    {
-        if (s[i] == 'N')
-            cnt++;
-    }
-    cout << (cnt == 1 ? "NO" : "YES") << endl;
+    int temp = min_element(s.begin(), s.end()) - s.begin();
+    cout << s[temp] << ' ';
+    for (int i = 0; i < temp; i++)
+        cout << s[i];
+    for (int i = temp + 1; i < s.length(); i++)
+        cout << s[i];
+    cout << endl;
+    
 }
 
 signed main()

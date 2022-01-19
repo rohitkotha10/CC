@@ -1,0 +1,10 @@
+{
+    "": {
+        "prefix": "pair_comp",
+        "body": [
+            "bool compfir(const pair<int, int> &a, const pair<int, int> &b) { return a.first < b.first; };",
+            "bool compsec(const pair<int, int> &a, const pair<int, int> &b) { return a.second < b.second; };"
+        ],
+        "description": ""
+    }
+}

@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 28.12.2021 19:55:54
+created: 18.01.2022 13:56:54
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,14 +17,18 @@ void solve()
 {
     string s;
     cin >> s;
-    int n = s.length();
-    int cnt = 0;
-    for (int i = 0; i < n; i++) 
+    map<char, int> sol;
+    for (int i = 0; i < s.length(); i++)
     {
-        if (s[i] == 'N')
-            cnt++;
+        sol[s[i]]++;
     }
-    cout << (cnt == 1 ? "NO" : "YES") << endl;
+
+    for (auto i : sol)
+        if (i.second == 2)
+            cout << i.first << i.first;
+        else if (i.second == 1)
+            cout << i.first;
+    cout << endl;
 }
 
 signed main()

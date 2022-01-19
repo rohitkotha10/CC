@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 28.12.2021 19:55:54
+created: 29.12.2021 14:53:25
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,14 +17,15 @@ void solve()
 {
     string s;
     cin >> s;
+
     int n = s.length();
-    int cnt = 0;
-    for (int i = 0; i < n; i++) 
+    if (n % 2 == 1)
     {
-        if (s[i] == 'N')
-            cnt++;
+        cout << "NO" << endl;
+        return;
     }
-    cout << (cnt == 1 ? "NO" : "YES") << endl;
+
+    cout << (s.substr(0, n / 2) == s.substr(n / 2, n / 2) ? "YES" : "NO") << endl;
 }
 
 signed main()

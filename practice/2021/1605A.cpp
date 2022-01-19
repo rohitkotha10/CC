@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 28.12.2021 19:55:54
+created: 03.01.2022 19:02:07
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -15,16 +15,9 @@ const int MOD = 1e9 + 7;
 
 void solve()
 {
-    string s;
-    cin >> s;
-    int n = s.length();
-    int cnt = 0;
-    for (int i = 0; i < n; i++) 
-    {
-        if (s[i] == 'N')
-            cnt++;
-    }
-    cout << (cnt == 1 ? "NO" : "YES") << endl;
+    int a1, a2, a3;
+    cin >> a1 >> a2 >> a3;
+    cout << ((a1 + a3 - (2 * a2)) % 3 == 0 ? 0 : 1) << endl;
 }
 
 signed main()

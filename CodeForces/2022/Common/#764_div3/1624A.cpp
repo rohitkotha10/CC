@@ -1,6 +1,6 @@
 /*
 author:  rohitkotha10
-created: 28.12.2021 19:55:54
+created: 11.01.2022 17:35:31
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -15,16 +15,17 @@ const int MOD = 1e9 + 7;
 
 void solve()
 {
-    string s;
-    cin >> s;
-    int n = s.length();
-    int cnt = 0;
-    for (int i = 0; i < n; i++) 
-    {
-        if (s[i] == 'N')
-            cnt++;
-    }
-    cout << (cnt == 1 ? "NO" : "YES") << endl;
+    int n;
+    cin >> n;
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    int mx = *max_element(arr.begin(), arr.end());
+    int change = 0;
+    for (int i = 0; i < n; i++)
+        change = max(change, mx - arr[i]);
+
+    cout << change << endl;
 }
 
 signed main()
