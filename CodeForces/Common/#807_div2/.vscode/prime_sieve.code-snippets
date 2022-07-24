@@ -1,0 +1,31 @@
+{
+    "": {
+        "prefix": "prime_sieve",
+        "body": [
+            "vector<int> primes;",
+            "vector<bool> check{0};",
+            "",
+            "void init_sieve(int max)",
+            "{",
+            "    vector<int> all{0};",
+            "    for (int i = 1; i <= max; i++)",
+            "    {",
+            "        check.push_back(1);",
+            "        all.push_back(i);",
+            "    }",
+            "    check[1] = 0;",
+            "",
+            "    int n = max;",
+            "",
+            "    for (int k = 2; k * k <= n; k++)",
+            "        for (int i = 2; i * k <= n; i++)",
+            "            check[k * i] = 0;",
+            "",
+            "    for (int i = 1; i <= max; i++)",
+            "        if (check[i] == 1)",
+            "            primes.push_back(all[i]);",
+            "};"
+        ],
+        "description": ""
+    }
+}
