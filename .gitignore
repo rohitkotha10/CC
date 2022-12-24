@@ -1,0 +1,6 @@
+.vscode/
+.clang-format
+
+.cph/
+
+*.exe
