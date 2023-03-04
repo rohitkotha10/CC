@@ -16,10 +16,12 @@ const int MOD = 1e9 + 7;
 int binSearch(vector<int>& arr, int val, int start, int end) {
     int cur = (start + end) / 2;
     if (start == cur) {
-        if (arr[cur] < val)
-            return cur;
+        if (arr[end] < val)
+            return end;
+        else if (arr[start] < val)
+            return start;
         else
-            return cur - 1;
+            return start - 1;
     }
 
     if (arr[cur] >= val) {
@@ -42,6 +44,7 @@ void solve() {
     for (int i = 1; i < n; i++) {
         int elem = binSearch(pre, i + 1, 0, i);
         cout << i - elem << ' ';
+        cout << flush;
     }
     cout << endl;
 }
