@@ -18,32 +18,57 @@ void solve() {
     cin >> k;
     string s;
     cin >> s;
-    int numf = 0;
-    int numb = 0;
-    for (int i = 0; i < k; i++) {
-        if (s[i] == 'F') {
-            numf++;
-            numb = 0;
-            if (numf >= 3) {
-                cout << "NO" << endl;
-                return;
+    string org;
+    for (int i = 1; i <= 30; i++) {
+        if (i % 3 == 0 && i % 5 == 0)
+            org += "FB";
+        else if (i % 3 == 0)
+            org += "F";
+        else if (i % 5 == 0)
+            org += "B";
+    }
+    int len = org.length();
+    if (k <= len) {
+        for (int i = 0; i < len; i++) {
+            string checker;
+            if (k + i > len) {
+                int extr = k + i - len;
+                string surp = org.substr(0, extr);
+                checker = org.substr(i, len - i) + surp;
+            } else {
+                checker = org.substr(i, k);
             }
-        } else if (s[i] == 'B') {
-            numb++;
-            numf = 0;
-            if (numb >= 2) {
-                cout << "NO" << endl;
+
+            if (checker == s) {
+                cout << " YES" << endl;
                 return;
             }
         }
-    }
-    for (int i = 0; i < k - 5; i++) {
-        if (s.substr(i, 6) == "FBFBFB") {
+        cout << "NO" << endl;
+    } else {
+        int ind = -1;
+        for (int i = 0; i < len; i++) {
+            string checker = org.substr(i, len - i) + org.substr(0, i);
+            if (checker == s) {
+                ind = i;
+                break;
+            }
+        }
+
+        if (ind == -1) {
             cout << "NO" << endl;
-            return;
+        } else {
+            for (int i = 0; i < k; i++) {
+                if (s[i] != org[ind]) {
+                    cout << "NO" << endl;
+                    return;
+                }
+                ind = ind + 1;
+                if (ind >= 30) ind = 0;
+            }
+            cout << "YES" << endl;
         }
     }
-    cout << "YES" << endl;
 }
 
 signed main() {
