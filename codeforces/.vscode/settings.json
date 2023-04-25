@@ -5,6 +5,7 @@
         "cmath": "cpp",
         "complex": "cpp",
         "random": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "iosfwd": "cpp"
     }
 }
