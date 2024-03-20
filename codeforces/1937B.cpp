@@ -18,19 +18,20 @@ void solve(int testCase) {
     cin >> n;
     string up, down;
     cin >> up >> down;
-    int cnt = 0;
-    string ans;
-    ans.push_back(down.back());
-    int cur = n - 1;
-    while (down[cur - 1] <= up[cur] && cur > 0) {
-        if (down[cur - 1] == up[cur]) cnt++;
-        ans.push_back(down[cur - 1]);
-        cur--;
+
+    int cnt = 1;
+    int las = 0;
+    for (int i = 1; i < n; i++) {
+        // cout << i << ' ' << cnt << ' ' << up.substr(i, n - i) << ' ' << down.substr(i - 1, n - i) << endl;
+        if (up[i] == down[i - 1])
+            cnt++;
+        else if (up[i] > down[i - 1])
+            break;
+        else
+            las = i, cnt = 1;
     }
-    string temp = up.substr(0, cur + 1);
-    reverse(ans.begin(), ans.end());
-    cout << temp + ans << endl;
-    cout << cnt + 1 << endl;
+    cout << up.substr(0, las + 1) + down.substr(las, n - las) << endl;
+    cout << cnt << endl;
 }
 
 signed main() {
